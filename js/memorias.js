@@ -155,27 +155,60 @@ function setupAudioContinuation() {
     return;
   }
 
+  let saved;
   try {
-    const saved = JSON.parse(raw);
-    if (!saved.src) return;
-
-    elements.audio.src = saved.src;
-    elements.audio.currentTime = Number(saved.currentTime) || 0;
-    elements.audioPill.textContent = saved.title || "Trilha em andamento";
-
-    if (!saved.paused) {
-      elements.audio.play().catch(() => {
-        elements.audioPill.textContent = "Toque no site principal para liberar a trilha";
-      });
-    }
-
-    elements.audio.addEventListener("timeupdate", persistAudioState);
-    elements.audio.addEventListener("pause", persistAudioState);
-    elements.audio.addEventListener("play", persistAudioState);
-    window.addEventListener("pagehide", persistAudioState);
+    saved = JSON.parse(raw);
   } catch (error) {
     localStorage.removeItem(AUDIO_STORAGE_KEY);
+    return;
   }
+
+  if (!saved || !saved.src) return;
+
+  elements.audio.src = saved.src;
+  elements.audioPill.textContent = saved.title || "Trilha em andamento";
+
+  // mantém a posição exata da faixa (espera os metadados quando necessário)
+  const applySavedTime = () => {
+    const time = Number(saved.currentTime) || 0;
+    if (Number.isFinite(time) && time > 0) {
+      try {
+        elements.audio.currentTime = time;
+      } catch (error) {
+        /* navegador ainda não aceita seek; será aplicado no loadedmetadata */
+      }
+    }
+  };
+
+  if (elements.audio.readyState >= 1) {
+    applySavedTime();
+  } else {
+    elements.audio.addEventListener("loadedmetadata", applySavedTime, { once: true });
+  }
+
+  elements.audio.addEventListener("timeupdate", persistAudioState);
+  elements.audio.addEventListener("pause", persistAudioState);
+  elements.audio.addEventListener("play", persistAudioState);
+  window.addEventListener("pagehide", persistAudioState);
+
+  if (!saved.paused) {
+    // tenta continuar imediatamente; se o navegador bloquear o autoplay,
+    // retoma do mesmo ponto no primeiro toque/rolagem do usuário
+    elements.audio.play().catch(() => resumeAudioOnFirstGesture());
+  }
+}
+
+function resumeAudioOnFirstGesture() {
+  const resume = () => {
+    elements.audio.play().catch(() => {});
+    ["pointerdown", "touchstart", "click", "keydown", "scroll"].forEach((evt) => {
+      window.removeEventListener(evt, resume);
+    });
+  };
+
+  ["pointerdown", "touchstart", "click", "keydown", "scroll"].forEach((evt) => {
+    window.addEventListener(evt, resume, { passive: true });
+  });
 }
 
 function persistAudioState() {

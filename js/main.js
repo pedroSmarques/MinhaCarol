@@ -906,19 +906,51 @@ function restoreAudioState(fallbackTitle) {
     const savedFile = getFileName(saved.src);
 
     if (currentFile === savedFile) {
-      elements.audio.currentTime = Number(saved.currentTime) || 0;
+      const applySavedTime = () => {
+        const time = Number(saved.currentTime) || 0;
+        if (Number.isFinite(time) && time > 0) {
+          try {
+            elements.audio.currentTime = time;
+          } catch (error) {
+            /* aguarda os metadados para fazer o seek */
+          }
+        }
+      };
+
+      if (elements.audio.readyState >= 1) {
+        applySavedTime();
+      } else {
+        elements.audio.addEventListener("loadedmetadata", applySavedTime, { once: true });
+      }
+
       elements.audioPill.textContent = saved.title || fallbackTitle;
       elements.trackTitle.textContent = saved.title || fallbackTitle;
 
       if (!saved.paused) {
+        // continua do mesmo ponto; se o autoplay for bloqueado,
+        // retoma no primeiro gesto do usuário (ex.: clique em "Entrar")
         elements.audio.play().catch(() => {
           elements.trackStatus.textContent = "Toque para continuar a música de onde ela parou.";
+          resumeAudioOnFirstGesture();
         });
       }
     }
   } catch (error) {
     localStorage.removeItem(AUDIO_STORAGE_KEY);
   }
+}
+
+function resumeAudioOnFirstGesture() {
+  const resume = () => {
+    elements.audio.play().catch(() => {});
+    ["pointerdown", "touchstart", "click", "keydown", "scroll"].forEach((evt) => {
+      window.removeEventListener(evt, resume);
+    });
+  };
+
+  ["pointerdown", "touchstart", "click", "keydown", "scroll"].forEach((evt) => {
+    window.addEventListener(evt, resume, { passive: true });
+  });
 }
 
 function createPlaceholder(text) {
