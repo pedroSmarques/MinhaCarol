@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node --check js/main.js)",
+      "Bash(node --check js/memorias.js)",
+      "Bash(node -e \"JSON.parse\\(require\\('fs'\\).readFileSync\\('data/timeline.json'\\)\\); JSON.parse\\(require\\('fs'\\).readFileSync\\('data/media-sections.json'\\)\\); console.log\\('JSON OK'\\)\")",
+      "Bash(node -e ' *)",
+      "mcp__Claude_Preview__preview_start"
+    ]
+  }
+}

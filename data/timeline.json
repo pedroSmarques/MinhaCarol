@@ -1,0 +1,26 @@
+[
+  {
+    "date": "30 Ago 2025",
+    "title": "Quando tudo começou",
+    "description": "Foi ali que a vida deixou de parecer tão comum, porque você apareceu e tudo ganhou outro tipo de cor.",
+    "photo": "assets/images/ComecoTudo.jpeg"
+  },
+  {
+    "date": "31 Jan 2026",
+    "title": "Dias que ganharam permanência",
+    "description": "Entre conversas longas, risadas soltas e hábitos simples, nasceram lembranças que continuam vivas do jeito mais bonito.",
+    "photo": "assets/images/lll.jpeg"
+  },
+  {
+    "date": "13 Fev 2026",
+    "title": "O peso e a força de amadurecer",
+    "description": "Nem todo capítulo vem leve. Alguns pedem verdade, escuta e coragem para que a gente consiga crescer sem negar o que sentiu.",
+    "photo": "assets/images/elas.jpeg"
+  },
+  {
+    "date": "4 Abr 2026",
+    "title": "O que continua",
+    "description": "Mesmo quando a direção muda, existem laços que permanecem no jeito como a gente lembra, sente e segue adiante.",
+    "photo": "assets/images/continuaMinha.jpeg"
+  }
+]

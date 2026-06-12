@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="Memórias - a área secreta da nossa história, com fotos e vídeos guardados com carinho.">
+  <title>Memórias</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="memories-page">
+  <div class="ambient-gradient" aria-hidden="true"></div>
+  <canvas class="particles-canvas" id="memories-particles" aria-hidden="true"></canvas>
+  <div class="butterfly-layer" id="memories-butterflies" aria-hidden="true"></div>
+  <div class="film-grain" aria-hidden="true"></div>
+
+  <div class="experience-shell">
+    <main class="memories-shell">
+      <section class="memories-hero premium-card">
+        <div class="memories-hero-copy">
+          <span class="chapter-tag">Área secreta</span>
+          <h1>Mais um pedaço da nossa história.</h1>
+          <p>Fotos, vídeos e instantes guardados do jeito mais simples: deixando a memória aparecer primeiro.</p>
+        </div>
+        <div class="memories-hero-actions">
+          <a class="premium-button memories-back" href="index.html">Voltar</a>
+          <div class="memories-ornament" aria-hidden="true">
+            <span class="ornament-glow one"></span>
+            <span class="ornament-glow two"></span>
+            <span class="ornament-line"></span>
+          </div>
+        </div>
+      </section>
+
+      <section class="memories-section" id="memories-carol">
+        <div class="memories-section-head">
+          <span class="chapter-tag">Carol</span>
+          <h2>Carol</h2>
+        </div>
+        <div class="memories-grid" id="grid-carol" aria-live="polite"></div>
+      </section>
+
+      <section class="memories-section" id="memories-nos">
+        <div class="memories-section-head">
+          <span class="chapter-tag">&#10084; Nós</span>
+          <h2>Nós</h2>
+        </div>
+        <div class="memories-grid" id="grid-nos" aria-live="polite"></div>
+      </section>
+
+      <section class="memories-section" id="memories-maluquices">
+        <div class="memories-section-head">
+          <span class="chapter-tag">Nossas Maluquices</span>
+          <h2>Nossas Maluquices</h2>
+        </div>
+        <div class="memories-grid" id="grid-maluquices" aria-live="polite"></div>
+      </section>
+
+      <section class="memories-section" id="memories-videos">
+        <div class="memories-section-head">
+          <span class="chapter-tag">Vídeos</span>
+          <h2>Vídeos</h2>
+        </div>
+        <div class="memories-videos" id="memories-videos-grid" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <aside class="floating-audio" id="memories-floating-audio">
+      <span class="audio-pill" id="memories-audio-pill">Silêncio bonito</span>
+    </aside>
+  </div>
+
+  <audio id="memories-audio" preload="metadata" loop></audio>
+
+  <div class="lightbox" id="memories-lightbox" aria-hidden="true">
+    <button class="premium-button lightbox-close" id="memories-lightbox-close" type="button" aria-label="Fechar galeria">Fechar</button>
+    <button class="premium-button lightbox-nav prev" id="memories-lightbox-prev" type="button" aria-label="Imagem anterior">&#8249;</button>
+    <figure class="lightbox-figure">
+      <img id="memories-lightbox-image" alt="">
+      <figcaption id="memories-lightbox-caption"></figcaption>
+    </figure>
+    <button class="premium-button lightbox-nav next" id="memories-lightbox-next" type="button" aria-label="Próxima imagem">&#8250;</button>
+  </div>
+
+  <div class="lightbox video-modal" id="memories-video-modal" aria-hidden="true">
+    <button class="premium-button lightbox-close" id="memories-video-close" type="button" aria-label="Fechar vídeo">Fechar</button>
+    <div class="video-modal-shell">
+      <video id="memories-video-player" controls playsinline preload="metadata"></video>
+    </div>
+  </div>
+
+  <script src="js/memorias.js"></script>
+</body>
+</html>

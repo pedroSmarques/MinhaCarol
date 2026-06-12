@@ -1,0 +1,45 @@
+{
+  "images": {
+    "carol": [
+      "carol1.jpeg",
+      "carol2.jpeg"
+    ],
+    "nos": [
+      "amor.jpeg",
+      "perfil.jpeg",
+      "comeco.jpeg",
+      "cc.jpeg"
+    ],
+    "maluquices": [
+      "elas.jpeg",
+      "dsa.jpeg",
+      "dwa.jpeg",
+      "ed.jpeg",
+      "eeva.jpeg",
+      "fefe.jpeg",
+      "gfgf.jpeg",
+      "hh.jpeg",
+      "hhg.jpeg",
+      "lll.jpeg",
+      "mmm.jpeg",
+      "nbh.jpeg",
+      "vv.jpeg",
+      "vvv.jpeg",
+      "w.jpeg",
+      "wdwadwa.jpeg",
+      "WhatsApp Image 2026-06-12 at 15.13.30.jpeg"
+    ]
+  },
+  "videosIndex": [
+    "index1.mp4",
+    "index2.mp4",
+    "index3.mp4"
+  ],
+  "videosMemorias": [
+    "memoria1.mp4",
+    "memoria2.mp4",
+    "memoria3.mp4"
+  ]
+}
+
+

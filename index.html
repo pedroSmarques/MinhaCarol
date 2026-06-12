@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="A Nossa História - uma experiência cinematográfica feita para Carol, com delicadeza, memória e esperança.">
+  <title>A Nossa História</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="ambient-gradient" aria-hidden="true"></div>
+  <canvas class="particles-canvas" id="particles-canvas" aria-hidden="true"></canvas>
+  <div class="butterfly-layer" id="butterfly-layer" aria-hidden="true"></div>
+  <div class="film-grain" aria-hidden="true"></div>
+
+  <div class="experience-shell">
+    <header class="intro-screen" id="intro-screen">
+      <div class="intro-backdrop"></div>
+      <div class="intro-copy">
+        <p class="eyebrow reveal-line">Feito para Carol</p>
+        <h1>
+          <span class="reveal-line">Bem-vinda, Carol.</span>
+          <span class="reveal-line delay-1">Fiz esse cantinho para guardar</span>
+          <span class="reveal-line delay-2">algumas das lembranças mais bonitas que vivi ao seu lado.</span>
+        </h1>
+        <button class="premium-button enter-button" id="enter-button" type="button">Entrar</button>
+      </div>
+      <div class="intro-hint">Coloque os fones, sorria um pouquinho e aproveite a viagem.</div>
+    </header>
+
+    <main class="chapters" id="chapters" aria-hidden="true">
+      <section class="chapter chapter-hero" id="chapter-hero">
+        <div class="chapter-inner">
+          <div class="chapter-heading">
+            <span class="chapter-tag">Capítulo 1</span>
+            <h2>Tem coisas que o tempo não leva.</h2>
+            <p>Nem tudo o que muda deixa de ter valor. Algumas histórias continuam fazendo sentido mesmo depois de ganhar outro ritmo.</p>
+          </div>
+          <div class="reflection-grid">
+            <article class="reflection-card">
+              <span>O que eu aprendi com você</span>
+              <p>Que as melhores conversas nunca precisaram de roteiro.</p>
+            </article>
+            <article class="reflection-card">
+              <span>O que ficou comigo</span>
+              <p>Seu jeito de transformar dias comuns em lembranças especiais.</p>
+            </article>
+            <article class="reflection-card">
+              <span>O que ainda desejo</span>
+              <p>Construir capítulos ainda mais bonitos do que aqueles que já vivemos.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="chapter chapter-music" id="chapter-music">
+        <div class="chapter-inner">
+          <div class="chapter-heading">
+            <span class="chapter-tag">Capítulo 2</span>
+            <h2>A trilha que sempre traz você de volta.</h2>
+            <p>Tem música que não explica nada. Só encosta na memória certa e faz tudo reaparecer do jeito mais simples.</p>
+          </div>
+          <div class="music-card premium-card">
+            <div class="music-meta">
+              <span class="music-kicker">Agora tocando</span>
+              <h3 id="track-title">Escolha a música de vocês</h3>
+              <p id="track-status">Adicione um arquivo em <code>assets/music/</code> e informe o nome em <code>js/main.js</code>.</p>
+            </div>
+            <div class="music-controls">
+              <button class="premium-button music-button" id="music-toggle" type="button">Tocar nossa música</button>
+              <input id="music-progress" type="range" min="0" max="100" value="0" aria-label="Progresso da música">
+            </div>
+            <audio id="background-audio" preload="metadata" loop></audio>
+          </div>
+        </div>
+      </section>
+
+      <section class="chapter chapter-timeline" id="chapter-timeline">
+        <div class="chapter-inner">
+          <div class="chapter-heading">
+            <span class="chapter-tag">Capítulo 3</span>
+            <h2>Nossa linha do tempo.</h2>
+            <p>Não para ficar presa no ontem. Só para lembrar com carinho que o que foi vivido teve peso, cor e verdade.</p>
+          </div>
+          <div class="timeline-track" id="timeline-track" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <section class="chapter chapter-featured" id="chapter-featured">
+        <div class="chapter-inner wide">
+          <div class="featured-photo premium-card" id="featured-photo">
+            <div class="featured-image-wrap">
+              <img id="featured-photo-image" alt="Foto em destaque da Carol" loading="lazy">
+            </div>
+            <div class="featured-copy">
+              <span class="chapter-tag">Capítulo 4</span>
+              <h2>Algumas pessoas entram na nossa vida. Outras passam a fazer parte dela.</h2>
+              <p>Tem rosto que não vira só lembrança. Vira referência de afeto, de beleza e de tudo o que um dia fez sentido de um jeito raro.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="chapter chapter-gallery" id="chapter-gallery">
+        <div class="chapter-inner">
+          <div class="chapter-heading">
+            <span class="chapter-tag">Capítulo 5</span>
+            <h2>Os capítulos que ainda sorriem dentro de mim.</h2>
+            <p>Não é só uma galeria. É um jeito de organizar a saudade boa por partes, como quem folheia uma história já vivida sem perder o brilho dela.</p>
+          </div>
+          <div class="gallery-story" id="gallery-story" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <section class="chapter chapter-videos" id="chapter-videos">
+        <div class="chapter-inner">
+          <div class="chapter-heading">
+            <span class="chapter-tag">Capítulo 6</span>
+            <h2>Momentos em movimento.</h2>
+            <p>Porque algumas lembranças só ficam completas quando voltam com gesto, voz, silêncio e tempo.</p>
+          </div>
+          <div class="video-storyboard" id="video-storyboard" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <section class="chapter chapter-counter" id="chapter-counter">
+        <div class="chapter-inner">
+          <div class="chapter-heading">
+            <span class="chapter-tag">Capítulo 7</span>
+            <h2>Você faz parte da minha história há</h2>
+            <p>E por mais que o tempo siga, tem presença que continua morando na forma como a gente sente o mundo.</p>
+          </div>
+          <div class="counter-grid" id="counter-grid">
+            <article><strong id="count-years">0</strong><span>Anos</span></article>
+            <article><strong id="count-months">0</strong><span>Meses</span></article>
+            <article><strong id="count-days">0</strong><span>Dias</span></article>
+            <article><strong id="count-hours">0</strong><span>Horas</span></article>
+            <article><strong id="count-minutes">0</strong><span>Minutos</span></article>
+            <article><strong id="count-seconds">0</strong><span>Segundos</span></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="chapter chapter-letter" id="chapter-letter">
+        <div class="chapter-inner narrow">
+          <div class="chapter-heading centered">
+            <span class="chapter-tag">Capítulo 8</span>
+            <h2>O que eu precisava te dizer.</h2>
+            <p>Sem frase pronta, sem pose e sem tentar parecer o que eu não sou. Só do jeito mais sincero que encontrei.</p>
+          </div>
+          <article class="letter-paper premium-card">
+            <div class="letter-seal"></div>
+            <div class="letter-body" id="letter-body"></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="chapter chapter-sky" id="chapter-sky">
+        <div class="chapter-inner narrow">
+          <div class="chapter-heading centered">
+            <span class="chapter-tag">Capítulo 9</span>
+            <h2>Um pedaço de calma no meio de tudo.</h2>
+            <p>Nem todo sentimento vem pesado. Às vezes ele só chega leve, bonito e quieto.</p>
+          </div>
+          <div class="sky-orbit premium-card">
+            <div class="sky-glow"></div>
+            <div class="sky-quote">Mesmo quando a vida muda de direção, algumas presenças continuam acesas por dentro.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="chapter chapter-timeback" id="chapter-timeback">
+        <div class="chapter-inner narrow">
+          <div class="chapter-heading centered">
+            <span class="chapter-tag">Capítulo 10</span>
+            <h2>Se eu pudesse voltar no tempo</h2>
+          </div>
+          <div class="cinema-lines" id="cinema-lines" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <section class="chapter chapter-ending" id="chapter-ending">
+        <div class="chapter-inner narrow">
+          <div class="chapter-heading centered">
+            <span class="chapter-tag">Capítulo 11</span>
+            <h2 class="ending-title">
+              <span>Algumas pessoas passam pela nossa vida.</span>
+              <span>Outras acabam virando parte da forma como a gente segue.</span>
+              <span>Você é uma dessas para mim.</span>
+            </h2>
+          </div>
+          <button class="premium-button heart-button" id="heart-button" type="button" aria-label="Encerrar experiência">&#10084;</button>
+          <p class="ending-message" id="ending-message">Fim... ou talvez só a pausa antes de um capítulo mais bonito.</p>
+          <div class="final-sequence" id="final-sequence" aria-live="polite"></div>
+          <div class="secret-epilogue" id="secret-epilogue" aria-hidden="true">
+            <p>Ainda não acabou...</p>
+            <p>Existe mais uma parte da nossa história guardada aqui.</p>
+            <a class="premium-button secret-link" href="memorias.html">Nossa História</a>
+          </div>
+          <div class="particle-field" id="particle-field" aria-hidden="true"></div>
+        </div>
+      </section>
+    </main>
+
+    <aside class="floating-audio" id="floating-audio">
+      <span class="audio-pill" id="audio-pill">Silêncio bonito</span>
+    </aside>
+  </div>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="premium-button lightbox-close" id="lightbox-close" type="button" aria-label="Fechar galeria">Fechar</button>
+    <button class="premium-button lightbox-nav prev" id="lightbox-prev" type="button" aria-label="Imagem anterior">&#8249;</button>
+    <figure class="lightbox-figure">
+      <img id="lightbox-image" alt="">
+      <figcaption id="lightbox-caption"></figcaption>
+    </figure>
+    <button class="premium-button lightbox-nav next" id="lightbox-next" type="button" aria-label="Próxima imagem">&#8250;</button>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
